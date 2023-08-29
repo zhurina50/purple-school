@@ -1,5 +1,3 @@
-
-
 function passwordEncryptor(password) {
     const piece = [1, 'qq'];
     let newPassword = password.split('');
@@ -13,7 +11,6 @@ function passwordDecoder(checkedPassword, originPassword) {
     let result = checkedPassword.split('');
     result.splice(-3);
     result.reverse();
-    result = result.join('');
-    return result === originPassword;
+    return result.join('') === originPassword;
 }
 console.log(passwordDecoder('ьташукучох1qq','хочукушать'));
