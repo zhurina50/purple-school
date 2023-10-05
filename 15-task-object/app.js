@@ -18,22 +18,25 @@ const toDoList = {
             priority: 5
         }
     ],
+    counter: 3,
 
     addTask: function (taskName, significance) {
         this.tasks.push(
             {
                 title: taskName,
-                id: this.tasks.length + 1,
+                id: this.counter + 1,
                 priority: significance
             }
-        )
+        );
+        this.counter++;
     },
 
-    delTask: function (taskNum) {
-      this.tasks = this.tasks.filter(el => taskNum !== el.id)
+    deleteTask: function (taskId) {
+        this.tasks = this.tasks.filter(el => taskId !== el.id);
+        this.counter--
     },
 
-    newName: function (taskId, updateName) {
+    updateTaskName: function (taskId, updateName) {
         this.tasks.map(el => {
             if (el.id == taskId) el.title = updateName
         });
@@ -44,8 +47,9 @@ const toDoList = {
     }
 
 }
-toDoList.addTask('gfgf',5);
-//toDoList.delTask(3);
-toDoList.newName(4, 'wash');
-toDoList.sortTask();
+toDoList.addTask('gfgf', 5);
+toDoList.addTask('pppppp', 3);
+toDoList.deleteTask(3);
+toDoList.updateTaskName(4, 'wash');
+
 console.log(toDoList);
