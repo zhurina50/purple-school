@@ -2,6 +2,7 @@
 const firstValue = document.querySelector('.first');
 const secondValue = document.querySelector('.second');
 const result = document.querySelector('.result');
+let sum;
 
 document.querySelector('.reset').addEventListener('click', function () {
     firstValue.value = '';
@@ -16,38 +17,25 @@ function checkNotNumber(firstValue, secondValue) {
     }
 }
 
-function addition() {
+document.querySelector('.calculation').onclick = function (event) {
+    if (event.target.tagName != 'BUTTON') return; 
     if (checkNotNumber(firstValue, secondValue)) {
         return
     } else {
-        const sum = Number(firstValue.value) + Number(secondValue.value);
-        document.querySelector('.result').innerText = `Result ${sum}`;
-    }
-}
-
-function subtraction() {
-    if (checkNotNumber(firstValue, secondValue)) {
-        return
-    } else {
-        const sum = Number(firstValue.value) - Number(secondValue.value);
-        document.querySelector('.result').innerText = `Result ${sum}`;
-    }
-}
-
-function multiplication() {
-    if (checkNotNumber(firstValue, secondValue)) {
-        return
-    } else {
-        const sum = Number(firstValue.value) * Number(secondValue.value);
-        document.querySelector('.result').innerText = `Result ${sum}`;
-    }
-}
-
-function division() {
-    if (checkNotNumber(firstValue, secondValue)) {
-        return
-    } else {
-        const sum = Number(firstValue.value)/Number(secondValue.value);
+        switch (event.target) {
+            case document.querySelector('.addition'):
+                sum = Number(firstValue.value) + Number(secondValue.value);
+                break;
+            case document.querySelector('.subtraction'):
+                sum = Number(firstValue.value) - Number(secondValue.value);
+                break;
+            case document.querySelector('.multiplication'):
+                sum = Number(firstValue.value) * Number(secondValue.value);
+                break;
+            case document.querySelector('.division'):
+                sum = Number(firstValue.value) / Number(secondValue.value);
+                break;
+        }
         document.querySelector('.result').innerText = `Result ${sum}`;
     }
 }
